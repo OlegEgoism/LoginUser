@@ -17,9 +17,3 @@ class UserInfoAdmin(ImportExportModelAdmin):
     search_fields = 'user_name', 'note', 'login_user',
     search_help_text = 'Поиск по пользователю, логину и примечанию'
     list_per_page = 20
-
-    # def save_model(self, request, obj, form, change):
-    #     """Преобразование поля note в заглавные буквы перед сохранением"""
-    #     if obj.note:
-    #         obj.note = obj.note.title()
-    #     super().save_model(request, obj, form, change)
