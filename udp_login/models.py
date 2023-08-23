@@ -18,7 +18,7 @@ class UserInfo(models.Model):
     password_user = models.CharField(verbose_name='Пароль', max_length=50, null=True, blank=True,
                                      help_text='Пароль автоматически сгенерируется при сохранении, если вы не придумали свой')
     note = models.CharField(verbose_name='Примечание', max_length=100, null=True, blank=True)
-    is_active = models.BooleanField(verbose_name='Активный', default=True)
+    is_active = models.BooleanField(verbose_name='Активный', default=True,help_text='Если пользователь активный то ставим галочку')
     date_created = models.DateTimeField(verbose_name='Дата создания', auto_now_add=True)
     date_updated = models.DateTimeField(verbose_name='Дата обновления', auto_now=True)
 

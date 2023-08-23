@@ -1,8 +1,9 @@
+from django.utils.timezone import now
 from django.contrib import admin
 from import_export.admin import ImportExportModelAdmin
 from rangefilter.filters import DateRangeFilterBuilder
-from .models import UserInfo
 from .resources import UserInfoResource
+from .models import UserInfo
 from django import forms
 
 admin.site.site_header = 'Информация о пользователях портала'
@@ -28,3 +29,9 @@ class UserInfoAdmin(ImportExportModelAdmin):
     search_fields = 'user_name', 'note', 'login_user',
     search_help_text = 'Поиск по пользователю, логину и примечанию'
     list_per_page = 20
+
+    def get_export_filename(self, request, queryset, file_format):
+        """Название файла при Экспорте"""
+        date_str = now().strftime('%d-%m-%Y')
+        filename = "%s-%s.%s" % ("User UDP", date_str, file_format.get_extension())
+        return filename
