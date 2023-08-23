@@ -4,7 +4,7 @@ import random
 import string
 
 
-def validate_str(value):
+def validate_login_user(value):
     """Проверка на наличие пробелов в поле login_user"""
     if ' ' in value:
         raise ValidationError("Логин не должен содержать пробелы")
@@ -13,7 +13,7 @@ def validate_str(value):
 class UserInfo(models.Model):
     """Информация о пользователях"""
     user_name = models.CharField(verbose_name='Пользователь', max_length=500)
-    login_user = models.CharField(verbose_name='Логин', max_length=50, validators=[validate_str],
+    login_user = models.CharField(verbose_name='Логин', max_length=50, unique=True, validators=[validate_login_user],
                                   help_text='При создании Логина учесть приставки: k - Мониторинг кадров, inv_ - Мониторинг инвестпроектов')
     password_user = models.CharField(verbose_name='Пароль', max_length=50, null=True, blank=True,
                                      help_text='Пароль автоматически сгенерируется при сохранении, если вы не придумали свой')
