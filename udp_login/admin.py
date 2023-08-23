@@ -29,13 +29,3 @@ class UserInfoAdmin(ImportExportModelAdmin):
     search_fields = 'user_name', 'note', 'login_user',
     search_help_text = 'Поиск по пользователю, логину и примечанию'
     list_per_page = 20
-
-    def user_name_verbose(self, obj):
-        return obj.user_name  # Возвращает значение поля user_name
-
-    user_name_verbose.short_description = 'Пользователь'  # Задаем verbose_name для колонки
-
-    def note_verbose(self, obj):
-        return obj.note  # Возвращает значение поля note
-
-    note_verbose.short_description = 'Примечание'  # Задаем verbose_name для колонки
